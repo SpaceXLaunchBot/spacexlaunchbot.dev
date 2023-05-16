@@ -1,0 +1,61 @@
+{
+  "name": "spacexlaunchbot.dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "",
+    "lint": "npx eslint ./src/ --cache",
+    "tsc-lint": "npx tsc -noEmit",
+    "build": "npx esbuild ./src/index.tsx --bundle --minify --platform=browser --outfile=./public/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpaceXLaunchBot/spacexlaunchbot.dev.git"
+  },
+  "author": "psidex",
+  "license": "GPL-3.0",
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": [
+      "airbnb",
+      "airbnb/hooks",
+      "airbnb-typescript"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "no-restricted-syntax": "off"
+    },
+    "ignorePatterns": [
+      "**.js",
+      "**.jsx"
+    ]
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^10.12.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "esbuild": "^0.17.19",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "typescript": "^5.0.4"
+  }
+}
