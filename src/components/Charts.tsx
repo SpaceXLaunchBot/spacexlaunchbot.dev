@@ -75,7 +75,7 @@ export default function Stats() {
       <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
         <Line strokeWidth={2} dot={false} name="Server Count" type="monotone" dataKey="g" stroke="#a7a3ff" />
         <CartesianGrid />
-        <XAxis tickMargin={10} dataKey="d" />
+        <XAxis tickMargin={10} dataKey="t" />
         <YAxis tickCount={6} type="number" width={35} domain={['dataMin - 10', 'dataMax + 10']} />
         <Tooltip />
       </LineChart>
@@ -83,7 +83,7 @@ export default function Stats() {
       <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
         <Line strokeWidth={2} dot={false} name="Subscribed Channel Count" type="monotone" dataKey="s" stroke="#13f088" />
         <CartesianGrid />
-        <XAxis tickMargin={10} dataKey="d" />
+        <XAxis tickMargin={10} dataKey="t" />
         <YAxis tickCount={6} type="number" width={35} domain={['dataMin - 10', 'dataMax + 10']} />
         <Tooltip />
       </LineChart>

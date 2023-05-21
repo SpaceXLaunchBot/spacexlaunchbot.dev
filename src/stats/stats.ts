@@ -6,7 +6,7 @@ export interface StatsResponse {
 export interface CountRecord {
   g: number;
   s: number;
-  d: string;
+  t: string;
 }
 
 export interface ActionCount {
