@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { Box } from '@chakra-ui/react';
+
 import {
   CartesianGrid,
   Line,
@@ -69,32 +71,40 @@ export default function Stats() {
     );
   }
 
+  // interval x axis 100
+
   return (
-    <div className="stats">
-      <h3>Server Count</h3>
-      <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
-        <Line strokeWidth={2} dot={false} name="Server Count" type="monotone" dataKey="g" stroke="#a7a3ff" />
-        <CartesianGrid />
-        <XAxis tickMargin={10} dataKey="t" />
-        <YAxis tickCount={6} type="number" width={35} domain={['dataMin - 10', 'dataMax + 10']} />
-        <Tooltip />
-      </LineChart>
-      <h3>Subscribed Channel Count</h3>
-      <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
-        <Line strokeWidth={2} dot={false} name="Subscribed Channel Count" type="monotone" dataKey="s" stroke="#13f088" />
-        <CartesianGrid />
-        <XAxis tickMargin={10} dataKey="t" />
-        <YAxis tickCount={6} type="number" width={35} domain={['dataMin - 10', 'dataMax + 10']} />
-        <Tooltip />
-      </LineChart>
-      <h3>Command Usage</h3>
-      <RadarChart className="chart" outerRadius={100} width={chartWidth} height={250} data={actionCounts}>
-        <PolarGrid />
-        <PolarAngleAxis dataKey="a" />
-        <PolarRadiusAxis angle={30} domain={[0, Math.max(...Object.values(actionCounts))]} />
-        <Radar name="Count" dataKey="c" stroke="#EB459E" fill="#ed2b93" fillOpacity={0.35} />
-        <Tooltip />
-      </RadarChart>
-    </div>
+    <Box>
+      <Box>
+        <h3>Server Count</h3>
+        <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
+          <Line strokeWidth={2} dot={false} name="Server Count" type="monotone" dataKey="g" stroke="#a7a3ff" />
+          <CartesianGrid />
+          <XAxis dataKey="d" interval={counts.length / 6} textAnchor="start" tick={{ fontSize: 12 }} />
+          <YAxis type="number" domain={['dataMin', 'auto']} />
+          <Tooltip />
+        </LineChart>
+      </Box>
+      <Box>
+        <h3>Subscribed Channel Count</h3>
+        <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
+          <Line strokeWidth={2} dot={false} name="Subscribed Channel Count" type="monotone" dataKey="s" stroke="#13f088" />
+          <CartesianGrid />
+          <XAxis dataKey="d" interval={counts.length / 6} textAnchor="start" tick={{ fontSize: 12 }} />
+          <YAxis type="number" domain={['dataMin', 'auto']} />
+          <Tooltip />
+        </LineChart>
+      </Box>
+      <Box>
+        <h3>Command Usage</h3>
+        <RadarChart className="chart" outerRadius={100} width={chartWidth} height={250} data={actionCounts}>
+          <PolarGrid />
+          <PolarAngleAxis dataKey="a" />
+          <PolarRadiusAxis angle={30} domain={[0, Math.max(...Object.values(actionCounts))]} />
+          <Radar name="Count" dataKey="c" stroke="#EB459E" fill="#ed2b93" fillOpacity={0.35} />
+          <Tooltip />
+        </RadarChart>
+      </Box>
+    </Box>
   );
 }
