@@ -80,7 +80,7 @@ export default function Stats() {
         <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
           <Line strokeWidth={2} dot={false} name="Server Count" type="monotone" dataKey="g" stroke="#a7a3ff" />
           <CartesianGrid />
-          <XAxis dataKey="d" interval={counts.length / 6} textAnchor="start" tick={{ fontSize: 12 }} />
+          <XAxis dataKey="d" domain={['dataMin', 'auto']} tick={{ fontSize: 12 }} />
           <YAxis type="number" domain={['dataMin', 'auto']} />
           <Tooltip />
         </LineChart>
@@ -90,7 +90,7 @@ export default function Stats() {
         <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
           <Line strokeWidth={2} dot={false} name="Subscribed Channel Count" type="monotone" dataKey="s" stroke="#13f088" />
           <CartesianGrid />
-          <XAxis dataKey="d" interval={counts.length / 6} textAnchor="start" tick={{ fontSize: 12 }} />
+          <XAxis dataKey="d" domain={['dataMin', 'auto']} tick={{ fontSize: 12 }} />
           <YAxis type="number" domain={['dataMin', 'auto']} />
           <Tooltip />
         </LineChart>
