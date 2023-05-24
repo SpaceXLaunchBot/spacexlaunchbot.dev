@@ -1,27 +1,34 @@
 import React from 'react';
+import {
+  Routes, Route, Link,
+} from 'react-router-dom';
 
 import {
-  Box, HStack, Heading, Text, VStack,
+  Flex, HStack, Heading, VStack, Button,
 } from '@chakra-ui/react';
 
-import Invite from './components/Invite';
-import Stats from './components/Charts';
+import Home from './routes/Home';
 import MiscButtons from './components/MiscButtons';
+import StatsPage from './routes/StatsPage';
 
 export default function App() {
   return (
-    <Box width="70%" margin="auto">
-      <HStack width="100%" justifyContent="space-around">
-        <VStack>
+    <Flex width="70%" height="100vh" margin="auto" direction="column">
+      <HStack flexGrow={1} maxHeight="4rem" paddingTop="1rem" width="100%" justifyContent="space-around">
+        <Link to="/">
           <Heading alignSelf="start">SpaceX Launch Bot</Heading>
-          <Text align="left">News, information, and notifications about SpaceX launches</Text>
-        </VStack>
+        </Link>
+        <Link to="/stats">
+          <Button variant="link">Stats</Button>
+        </Link>
         <MiscButtons />
       </HStack>
-      <VStack marginTop="3rem" spacing={8}>
-        <Invite />
-        <Stats />
+      <VStack flexGrow={9} justifyContent="space-around">
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="stats" element={<StatsPage />} />
+        </Routes>
       </VStack>
-    </Box>
+    </Flex>
   );
 }

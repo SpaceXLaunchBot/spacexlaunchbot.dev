@@ -20,7 +20,7 @@ import {
 
 import { getStats, CountRecord, ActionCount } from '../stats/stats';
 
-export default function Stats() {
+export default function Charts() {
   const [counts, setCounts] = useState<CountRecord[]>([]);
   const [actionCounts, setActionCounts] = useState<ActionCount[]>([]);
   const [chartWidth, setChartWidth] = useState(0);

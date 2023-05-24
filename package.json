@@ -8,7 +8,8 @@
     "lint": "npx eslint ./src/ --cache",
     "tsc-lint": "npx tsc -noEmit",
     "build": "npx esbuild ./src/index.tsx --bundle --minify --platform=browser --outfile=./public/index.js",
-    "watch": "npx npm-watch build"
+    "watch": "npx npm-watch build",
+    "serve": "cd public && python -m http.server"
   },
   "watch": {
     "build": {
@@ -52,11 +53,13 @@
     "framer-motion": "^10.12.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
     "recharts": "^2.6.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.0.0",
     "esbuild": "^0.17.19",
