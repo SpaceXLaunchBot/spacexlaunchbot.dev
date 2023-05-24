@@ -6,20 +6,22 @@ import {
 
 import Invite from './components/Invite';
 import Stats from './components/Charts';
+import MiscButtons from './components/MiscButtons';
 
 export default function App() {
   return (
-    <Box width="40%" margin="auto">
-      <HStack justifyContent="space-between">
-        <Heading>SpaceX Launch Bot</Heading>
-      </HStack>
-      <HStack>
+    <Box width="70%" margin="auto">
+      <HStack width="100%" justifyContent="space-around">
         <VStack>
-          <Text>News, information, and notifications about SpaceX launches</Text>
-          <Invite />
+          <Heading alignSelf="start">SpaceX Launch Bot</Heading>
+          <Text align="left">News, information, and notifications about SpaceX launches</Text>
         </VStack>
-        <Stats />
+        <MiscButtons />
       </HStack>
+      <VStack marginTop="3rem" spacing={8}>
+        <Invite />
+        <Stats />
+      </VStack>
     </Box>
   );
 }

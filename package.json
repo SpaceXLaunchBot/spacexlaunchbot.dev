@@ -7,7 +7,16 @@
     "test": "",
     "lint": "npx eslint ./src/ --cache",
     "tsc-lint": "npx tsc -noEmit",
-    "build": "npx esbuild ./src/index.tsx --bundle --minify --platform=browser --outfile=./public/index.js"
+    "build": "npx esbuild ./src/index.tsx --bundle --minify --platform=browser --outfile=./public/index.js",
+    "watch": "npx npm-watch build"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts,tsx"
+    }
   },
   "repository": {
     "type": "git",
@@ -36,6 +45,7 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.6.1",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -57,6 +67,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "npm-watch": "^0.11.0",
     "typescript": "^5.0.4"
   }
 }

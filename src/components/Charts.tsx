@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { Box } from '@chakra-ui/react';
+import {
+  Box, Center, HStack, Skeleton, Text, VStack, useColorModeValue,
+} from '@chakra-ui/react';
 
 import {
   CartesianGrid,
@@ -24,6 +26,7 @@ export default function Stats() {
   const [chartWidth, setChartWidth] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState('');
+  const textColour = useColorModeValue('black', 'white');
 
   useEffect(() => {
     const a = async () => {
@@ -58,9 +61,9 @@ export default function Stats() {
     window.addEventListener('resize', handleResize);
   }, []);
 
-  if (!loaded) {
-    return <h2>Loading...</h2>;
-  }
+  // if (!loaded) {
+  //   return <h2>Loading...</h2>;
+  // }
 
   if (error !== '') {
     return (
@@ -74,37 +77,50 @@ export default function Stats() {
   // interval x axis 100
 
   return (
-    <Box>
-      <Box>
-        <h3>Server Count</h3>
-        <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
-          <Line strokeWidth={2} dot={false} name="Server Count" type="monotone" dataKey="g" stroke="#a7a3ff" />
-          <CartesianGrid />
-          <XAxis dataKey="d" domain={['dataMin', 'auto']} tick={{ fontSize: 12 }} />
-          <YAxis type="number" domain={['dataMin', 'auto']} />
-          <Tooltip />
-        </LineChart>
-      </Box>
-      <Box>
-        <h3>Subscribed Channel Count</h3>
-        <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
-          <Line strokeWidth={2} dot={false} name="Subscribed Channel Count" type="monotone" dataKey="s" stroke="#13f088" />
-          <CartesianGrid />
-          <XAxis dataKey="d" domain={['dataMin', 'auto']} tick={{ fontSize: 12 }} />
-          <YAxis type="number" domain={['dataMin', 'auto']} />
-          <Tooltip />
-        </LineChart>
-      </Box>
-      <Box>
-        <h3>Command Usage</h3>
-        <RadarChart className="chart" outerRadius={100} width={chartWidth} height={250} data={actionCounts}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="a" />
-          <PolarRadiusAxis angle={30} domain={[0, Math.max(...Object.values(actionCounts))]} />
-          <Radar name="Count" dataKey="c" stroke="#EB459E" fill="#ed2b93" fillOpacity={0.35} />
-          <Tooltip />
-        </RadarChart>
-      </Box>
-    </Box>
+    <>
+      <HStack>
+        <Box>
+          <Text align="center">Server Count</Text>
+          <Skeleton height={250} width={chartWidth} isLoaded={loaded}>
+            <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
+              <Line strokeWidth={2} dot={false} name="Server Count" type="monotone" dataKey="g" stroke="#a7a3ff" />
+              <CartesianGrid />
+              <XAxis dataKey="d" domain={['dataMin', 'auto']} tick={{ fontSize: 12, fill: textColour }} angle={-25} tickMargin={10} />
+              <YAxis type="number" domain={['dataMin', 'auto']} tick={{ fill: textColour }} />
+              <Tooltip />
+            </LineChart>
+          </Skeleton>
+        </Box>
+        <Box>
+          <Text align="center">Subscribed Channel Count</Text>
+          <Skeleton height={250} width={chartWidth} isLoaded={loaded}>
+            <LineChart syncId="countchart" className="chart" width={chartWidth} height={250} data={counts}>
+              <Line strokeWidth={2} dot={false} name="Subscribed Channel Count" type="monotone" dataKey="s" stroke="#13f088" />
+              <CartesianGrid />
+              <XAxis dataKey="d" domain={['dataMin', 'auto']} tick={{ fontSize: 12, fill: textColour }} angle={-25} tickMargin={10} />
+              <YAxis type="number" domain={['dataMin', 'auto']} tick={{ fill: textColour }} />
+              <Tooltip />
+            </LineChart>
+          </Skeleton>
+        </Box>
+      </HStack>
+      <Center>
+        <VStack>
+          <Text>Command Usage</Text>
+          <Skeleton height={250} width={chartWidth} isLoaded={loaded}>
+            <RadarChart className="chart" outerRadius={100} width={chartWidth} height={250} data={actionCounts}>
+              <PolarGrid />
+              <PolarAngleAxis dataKey="a" tick={{ fill: textColour }} />
+              <PolarRadiusAxis
+                angle={30}
+                domain={[0, Math.max(...actionCounts.map(({ c }) => c))]}
+              />
+              <Radar name="Count" dataKey="c" stroke="#EB459E" fill="#ed2b93" fillOpacity={0.35} />
+              <Tooltip />
+            </RadarChart>
+          </Skeleton>
+        </VStack>
+      </Center>
+    </>
   );
 }
