@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 
 import {
-  Flex, HStack, Heading, VStack, Button, Box,
+  Flex, HStack, Heading, VStack, Button,
 } from '@chakra-ui/react';
 
 import ThemeButton from './components/ThemeButton';
