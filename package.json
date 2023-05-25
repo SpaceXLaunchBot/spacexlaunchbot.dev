@@ -9,7 +9,7 @@
     "tsc-lint": "npx tsc -noEmit",
     "build": "npx esbuild ./src/index.tsx --bundle --minify --platform=browser --outfile=./public/index.js",
     "watch": "npx npm-watch build",
-    "serve": "cd public && python -m http.server"
+    "serve": "cd public && python -m http.server 8080"
   },
   "watch": {
     "build": {
