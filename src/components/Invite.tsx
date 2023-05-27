@@ -4,7 +4,7 @@ import { Button, Text } from '@chakra-ui/react';
 
 import DiscordIcon from './DiscordIcon';
 
-const inviteUrl = 'https://discord.com/oauth2/authorize?client_id=411618411169447950&scope=bot&permissions=2147614720';
+const inviteUrl = 'https://discord.com/oauth2/authorize?client_id=411618411169447950&scope=bot&permissions=2147633152';
 
 export default function Invite() {
   const inviteClicked = () => {
